@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    background: linear-gradient(0deg, rgba(35,38,54,1) 72%, rgba(55,91,92,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+h1{
+    text-align: center;
+    display: inline-block;
+}
+.container{
+    width: 60%;
+    margin: 0 auto;
+}
+.form{
+    background-color: #1b1c20;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0 20px 20px 0;
+}
+.form .form__input{
+    text-align: center;
+    border: none;
+    width: 20%;
+}
+.form .form__button{
+    border: none;
+    color: white;
+    background-color: #3861fb;
+    padding: 12px;
+    border-radius: 10px;
+    width: 30%;
+}.form .form__button:hover{
+    background-color: #5b7efd;
+    cursor: pointer;
+}
+.productos__lista{
+    background-color: #1b1c20;
+    color: white;
+    border-radius: 10px;
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.productos__lista .productos__item{
+    width: 33%;
+    text-align: left;
+    padding: 8px;
+}
+#cantidad_productos{
+    background-color: #1b1c20;
+    color: white;
+    padding: 20px;
+    display: inline-block;
+}

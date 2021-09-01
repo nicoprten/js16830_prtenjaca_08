@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 08 - DOM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/miarchivo.js" defer></script>
+</head>
+<body>
+    <div class='container'>  
+        <div class='form'>
+            <input class='form__input' type="text" id="nombre" placeholder='Nombre'>
+            <input class='form__input' type="number" id="precio" placeholder='Precio'>
+            <input class='form__input' type="number" id="stock" placeholder='Stock'>
+            <button class='form__button' type="button" onclick="agregarProducto()" id='validar'>AGREGAR PRODUCTO</button>
+        </div>
+        <div>
+            <h1>Listado de productos</h1>
+            <p id='cantidad_productos'></p>
+            <div id='productos'>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
