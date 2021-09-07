@@ -11,6 +11,8 @@ body{
 h1{
     text-align: center;
     display: inline-block;
+    font-size: 1.5em;
+    color: white;
 }
 .container{
     width: 60%;
@@ -24,9 +26,16 @@ h1{
     border-radius: 0 20px 20px 0;
 }
 .form .form__input{
+    font-size: 0.8em;
     text-align: center;
     border: none;
     width: 20%;
+}
+.form .validado{
+    background-color: rgb(107, 156, 102);
+}
+.form .invalidado{
+    background-color: rgb(156, 38, 17);
 }
 .form .form__button{
     border: none;
@@ -53,6 +62,18 @@ h1{
     width: 33%;
     text-align: left;
     padding: 8px;
+}
+.productos__lista .productos__item .productos__button{
+    border: 2px solid white;
+    padding: 10px;
+    background-color: white;
+    color: #1b1c20;
+}
+.productos__lista .productos__item .productos__button:hover{
+    background-color: #1b1c20;
+    color: white;
+    transition: .4s;
+    cursor: pointer;
 }
 #cantidad_productos{
     background-color: #1b1c20;
