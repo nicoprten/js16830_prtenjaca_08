@@ -15,6 +15,7 @@ let cantidad_productos = document.getElementById('cantidad_productos');
 let productosJSON;
 //ESTUVE MUCHO TIEMPO VIENDO COMO HACER PARA TRAER LO GUARDADO EN EL LOCALSTORAGE, SE ME PISABAN LAS VARIABLES AL TOCAR F5 POR QUE LAS VOLVIA A DECLARAR, LES GUARDE EL VALOR DEL LOCALSTORAGE, SI NO HAY NADA EL VALOR ES NULL, EN ESE CASO SI DECLARAR LAS VARIALBES.
 let productos_guardados = JSON.parse(localStorage.getItem('productos'));
+habilitarBorrarTodo();
 if(productos_guardados == null){
     productos_guardados = [];
     cantidad_productos.innerHTML = 0;
@@ -36,7 +37,7 @@ function agregarProducto(){
         let producto = new Productos(0 ,nombre, precio, stock);
         productos_guardados.push(producto);
         console.log(productos_guardados);
-        
+        habilitarBorrarTodo();
         let cantidad = productos_guardados.length;
         cantidad_productos.innerHTML = cantidad;
         producto.id = cantidad;
@@ -53,12 +54,19 @@ function agregarProducto(){
         
 }
 
-//BORRAR PRODUCTO DEL LOCALSTORAGE Y DEL HTML
+// BORRAR PRODUCTO DEL LOCALSTORAGE Y DEL HTML
+// DATO: TRATE DE BORRARLOS CON SPLICE, RESTANDOLE 1 AL ID SACABA EL INDICE, PERO SE ROMPIA AL BORRAR VARIOS ELEMENTOS Y ROMPER EL ORDEN DE PRODUCTO.ID
+// POR ESO PASE A USAR EL METODO .FILTER
 function borrarProducto(id){
+    
     let idBorrable = document.getElementById(id);
     idBorrable.remove();
-    let index = id - 1;
-    productos_guardados.splice(index, 1);
+    // console.log(idBorrable.id);
+    // let index = id - 1;
+    // console.log(index);
+    productos_guardados = productos_guardados.filter(producto => producto.id != id);
+    habilitarBorrarTodo();
+    // productos_guardados.splice(index, 1);
     cantidad_productos.innerHTML -= 1;
     let productosJSON = JSON.stringify(productos_guardados);
     localStorage.setItem('productos', productosJSON);
@@ -79,21 +87,30 @@ function validarPrecioStock(e){
         e.target.classList.remove('validado')
     }
 }
+// FUNCIÓN PARA HABILITAR O DEHABILITAR BOTON DE BORRAR TODOS LOS PRODUCTOS
+function habilitarBorrarTodo(){
+    let boton_borrar_todo = document.getElementById('borrarTodo');
+    if (productos_guardados == null){
+        boton_borrar_todo.className = 'productos__button inhabilitado';
+    }else if(productos_guardados.length == 0){
+        boton_borrar_todo.className = 'productos__button inhabilitado';
+    }else{
+        boton_borrar_todo.className = 'productos__button';
+    }
+}
 
 //FUNCION PARA BORRAR TODO EL STOCK DE PRODUCTOS AGREGADOS
 const borrarTodo = (array) => {
-    // array.forEach(producto => {
-        //     producto.nombre = '';
-        // });
     console.log('Borrando..');
     const confirmando = confirm('¿Estás seguro de querer borrar todo?');
     if(confirmando){
         array.length = 0; //PARA BORRAR UN ARRAY (NO SÉ SI ES EL MÉTODO ADECUADO)
         console.log(array);
         localStorage.clear();
-        div_productos.innerHTML = `<p>PRODUCTOS ELIMINADOS</p>`;
+        div_productos.innerHTML = `<p class='productos__p'>PRODUCTOS ELIMINADOS</p>`;
         cantidad_productos.innerHTML = 0;
     }else{
         console.log('Cancelando..');
     }
+    habilitarBorrarTodo();
 }

@@ -3,7 +3,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 body{
-    background: linear-gradient(0deg, rgba(35,38,54,1) 72%, rgba(55,91,92,1) 100%);
+    background: linear-gradient(0deg, rgba(35,38,54,1) 72%, rgb(37, 60, 61) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
@@ -56,7 +56,13 @@ h1{
     background-color: #1b1c20;
 }
 
-
+.productos__p{
+    color: white;
+    text-align: center;
+    padding: 10px;
+    background-color: #1b1c20;
+    border-radius: 0 0 10px 10px;
+}
 .productos__lista{
     background-color: #1b1c20;
     color: white;
@@ -83,6 +89,9 @@ h1{
     color: white;
     transition: .4s;
     cursor: pointer;
+}
+.inhabilitado{
+    visibility: hidden;
 }
 #cantidad_productos{
     background-color: #1b1c20;
