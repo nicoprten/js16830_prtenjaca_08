@@ -76,15 +76,15 @@ function borrarProducto(id){
 let inputPrecio = document.getElementById('precio').addEventListener('input', validarPrecioStock);
 let inputStock = document.getElementById('stock').addEventListener('input', validarPrecioStock);
 
-function validarPrecioStock(e){
-    let numero = parseInt(e.target.value);
+function validarPrecioStock(event){
+    let numero = parseInt(event.target.value);
 
     if(typeof numero == 'number' && numero > 0){
-        e.target.classList.add('validado');
-        e.target.classList.remove('invalidado');
+        event.target.classList.add('validado');
+        event.target.classList.remove('invalidado');
     }else{
-        e.target.classList.add('invalidado')
-        e.target.classList.remove('validado')
+        event.target.classList.add('invalidado')
+        event.target.classList.remove('validado')
     }
 }
 // FUNCIÓN PARA HABILITAR O DEHABILITAR BOTON DE BORRAR TODOS LOS PRODUCTOS
