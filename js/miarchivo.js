@@ -13,7 +13,6 @@ let productosJSON;
 let productos_guardados = JSON.parse(localStorage.getItem('productos'));
 habilitarBorrarTodo();
 function agregarListadoDeProductos(producto){
-    console.log(producto);
     div_productos.innerHTML += `
     <ul id='${producto.id}' class='productos__lista'>
         <li class='productos__item'>NOMBRE: ${producto.nombre}</li>
@@ -33,7 +32,7 @@ if(productos_guardados == null){
     }
 }
 function agregarProducto(){
-        let nombre = document.getElementById('nombre').value;
+        let nombre = $('#nombre').val();
         let precio = document.getElementById('precio').value;
         let stock = document.getElementById('stock').value;
         let producto = new Productos(0 ,nombre, precio, stock);
