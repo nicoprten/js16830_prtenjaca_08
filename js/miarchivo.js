@@ -36,11 +36,11 @@ function agregarProducto(){
         let precio = document.getElementById('precio').value;
         let stock = document.getElementById('stock').value;
         let producto = new Productos(0 ,nombre, precio, stock);
+        let cantidad = productos_guardados.length;
+        producto.id = cantidad;
         productos_guardados.push(producto);
         habilitarBorrarTodo();
-        let cantidad = productos_guardados.length;
         cantidad_productos.innerHTML = cantidad;
-        producto.id = cantidad;
         productosJSON = JSON.stringify(productos_guardados);
         localStorage.setItem('productos', productosJSON);   
         agregarListadoDeProductos(producto);
@@ -97,7 +97,17 @@ const borrarTodo = (array) => {
         array.length = 0; //PARA BORRAR UN ARRAY (NO SÉ SI ES EL MÉTODO ADECUADO)
         console.log(array);
         localStorage.clear();
-        div_productos.innerHTML = `<p class='productos__p'>PRODUCTOS ELIMINADOS</p>`;
+        div_productos.innerHTML = `<p id='p__eliminados' class='productos__p'>PRODUCTOS ELIMINADOS</p>`;
+        $('#p__eliminados').animate(
+            {
+                top: '40px',
+                opacity: '1'
+            },
+            2000,
+            ()=>{
+            }
+        ).delay(2000)
+        .slideUp(800);
         cantidad_productos.innerHTML = 0;
     }else{
         console.log('Cancelando..');

@@ -61,12 +61,17 @@ h1{
     background-color: #1b1c20;
 }
 
+#productos{
+    position: relative;
+}
 .productos__p{
+    position: relative;
     color: white;
     text-align: center;
     padding: 10px;
     background-color: #1b1c20;
     border-radius: 0 0 10px 10px;
+    opacity: 0;
 }
 .productos__lista{
     background-color: #1b1c20;
